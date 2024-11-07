@@ -14,7 +14,7 @@
 		<style>
 			/* Popup modal styling */
 			#popup {
-				display: block; /* Show popup immediately */
+				display: none; /* Initially hidden */
 				position: fixed;
 				top: 50%;
 				left: 50%;
@@ -43,7 +43,7 @@
 			}
 
 			#overlay {
-				display: block; /* Show overlay immediately */
+				display: none; /* Initially hidden */
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -129,9 +129,12 @@
 				}
 			}
 
-			// Remove 'is-preload' class on page load
+			// Show the popup with a delay to match page load timing
 			document.addEventListener('DOMContentLoaded', () => {
 				document.body.classList.remove('is-preload');
+				setTimeout(() => {
+					togglePopup(); // Show the popup with a delay
+				}, 1000); // 1-second delay to match the loading timing
 			});
 		</script>
 	</body>

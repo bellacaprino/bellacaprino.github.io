@@ -13,11 +13,8 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
 			/* Popup modal styling */
-			#popup, #overlay {
-				display: none; /* Hidden by default */
-			}
-
 			#popup {
+				display: block; /* Show popup immediately */
 				position: fixed;
 				top: 50%;
 				left: 50%;
@@ -46,6 +43,7 @@
 			}
 
 			#overlay {
+				display: block; /* Show overlay immediately */
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -64,6 +62,11 @@
 				top: 10px;
 				right: 15px;
 				text-decoration: none;
+			}
+
+			/* Hide button initially */
+			#open-popup-button {
+				display: none;
 			}
 		</style>
 	</head>
@@ -88,8 +91,8 @@
 							<li><a href="mailto:bellacaprino@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 						</ul>
 					</nav>
-					<!-- Button to open popup (hidden after close) -->
-					<button id="open-popup-button" style="display: none;" onclick="togglePopup()">Check Out My New Single!</button>
+					<!-- Button to open popup (hidden initially) -->
+					<button id="open-popup-button" onclick="togglePopup()">Check Out My New Single!</button>
 				</header>
 
 				<!-- Footer -->
@@ -114,21 +117,22 @@
 				const button = document.getElementById('open-popup-button');
 				const isVisible = popup.style.display === 'block';
 
-				// Show/hide the popup and overlay
+				// Toggle the popup and overlay
 				popup.style.display = isVisible ? 'none' : 'block';
 				overlay.style.display = isVisible ? 'none' : 'block';
 
-				// Hide the button once the popup is closed
+				// Show the button only after closing the popup
 				if (isVisible) {
 					button.style.display = 'none';
+				} else {
+					button.style.display = 'block';
 				}
 			}
 
-			// Automatically show the popup when the page loads
-			window.onload = function() {
+			// Remove 'is-preload' class on page load
+			document.addEventListener('DOMContentLoaded', () => {
 				document.body.classList.remove('is-preload');
-				togglePopup(); // Show the popup automatically
-			}
+			});
 		</script>
 	</body>
 </html>

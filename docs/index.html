@@ -1,8 +1,12 @@
 <!DOCTYPE HTML>
-
+<!--
+	Aerial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
-		<title>Belle Cirino</title>
+		<title>Aerial by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -10,20 +14,19 @@
 		<style>
 			/* Popup modal styling */
 			#popup {
-				display: none; /* Initially hidden */
+				display: none; /* Hidden by default */
 				position: fixed;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
 				background-color: #222;
 				padding: 20px;
-				width: 90%;
+				width: 80%;
 				max-width: 400px;
 				border-radius: 8px;
 				box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 				text-align: center;
 				z-index: 1001;
-				color: white;
 			}
 
 			#popup h2 {
@@ -38,8 +41,9 @@
 				border-radius: 4px;
 			}
 
+			/* Dark overlay */
 			#overlay {
-				display: none; /* Initially hidden */
+				display: none; /* Hidden by default */
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -58,11 +62,6 @@
 				top: 10px;
 				right: 15px;
 				text-decoration: none;
-			}
-
-			/* Hide button initially */
-			#open-popup-button {
-				display: none;
 			}
 		</style>
 	</head>
@@ -87,8 +86,8 @@
 							<li><a href="mailto:bellacaprino@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 						</ul>
 					</nav>
-					<!-- Button to open popup (hidden initially) -->
-					
+					<!-- Button to open popup -->
+					<button onclick="togglePopup()">Check Out My New Single!</button>
 				</header>
 
 				<!-- Footer -->
@@ -110,28 +109,14 @@
 			function togglePopup() {
 				const popup = document.getElementById('popup');
 				const overlay = document.getElementById('overlay');
-				const button = document.getElementById('open-popup-button');
 				const isVisible = popup.style.display === 'block';
-
-				// Toggle the popup and overlay
 				popup.style.display = isVisible ? 'none' : 'block';
 				overlay.style.display = isVisible ? 'none' : 'block';
-
-				// Show the button only after closing the popup
-				if (isVisible) {
-					button.style.display = 'none';
-				} else {
-					button.style.display = 'block';
-				}
 			}
 
-			// Show the popup with a delay to match page load timing
-			document.addEventListener('DOMContentLoaded', () => {
-				document.body.classList.remove('is-preload');
-				setTimeout(() => {
-					togglePopup(); // Show the popup with a delay
-				}, 3000); // 1-second delay to match the loading timing
-			});
+			window.onload = function() { document.body.classList.remove('is-preload'); }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
 		</script>
 	</body>
 </html>

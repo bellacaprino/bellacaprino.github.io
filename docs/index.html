@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+
 <html>
 	<head>
 		<title>Belle Cirino</title>
@@ -7,13 +8,13 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
-			/* Popup modal styling with pop-up animation */
+			/* Popup modal styling */
 			#popup {
 				display: none; /* Initially hidden */
 				position: fixed;
 				top: 50%;
 				left: 50%;
-				transform: translate(-50%, -50%) scale(0.5); /* Start small */
+				transform: translate(-50%, -50%);
 				background-color: #222;
 				padding: 20px;
 				width: 90%;
@@ -23,30 +24,18 @@
 				text-align: center;
 				z-index: 1001;
 				color: white;
-				opacity: 0; /* Start fully transparent */
-				transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth pop-up animation */
 			}
 
-			/* Keyframes for the "pop" animation */
-			@keyframes popUp {
-				0% {
-					transform: translate(-50%, -50%) scale(0.5); /* Small scale */
-					opacity: 0; /* Invisible */
-				}
-				70% {
-					transform: translate(-50%, -50%) scale(1.1); /* Slightly overshoot */
-					opacity: 1; /* Fully visible */
-				}
-				100% {
-					transform: translate(-50%, -50%) scale(1); /* Full size */
-					opacity: 1;
-				}
+			#popup h2 {
+				color: #fff;
+				margin-bottom: 15px;
 			}
 
-			/* Apply the animation when the popup is displayed */
-			#popup.show {
-				display: block;
-				animation: popUp 0.6s ease forwards; /* Pop-up animation */
+			#popup iframe {
+				width: 100%;
+				height: 80px;
+				border: none;
+				border-radius: 4px;
 			}
 
 			#overlay {
@@ -69,6 +58,11 @@
 				top: 10px;
 				right: 15px;
 				text-decoration: none;
+			}
+
+			/* Hide button initially */
+			#open-popup-button {
+				display: none;
 			}
 		</style>
 	</head>
@@ -93,6 +87,8 @@
 							<li><a href="mailto:bellacaprino@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 						</ul>
 					</nav>
+					<!-- Button to open popup (hidden initially) -->
+					
 				</header>
 
 				<!-- Footer -->
@@ -110,19 +106,22 @@
 			</div>
 		</div>
 		<script>
-			// Function to toggle popup visibility with pop-up animation
+			// Function to toggle popup visibility
 			function togglePopup() {
 				const popup = document.getElementById('popup');
 				const overlay = document.getElementById('overlay');
-				const isVisible = popup.classList.contains('show');
+				const button = document.getElementById('open-popup-button');
+				const isVisible = popup.style.display === 'block';
 
-				// Toggle the "show" class to control visibility and animation
+				// Toggle the popup and overlay
+				popup.style.display = isVisible ? 'none' : 'block';
+				overlay.style.display = isVisible ? 'none' : 'block';
+
+				// Show the button only after closing the popup
 				if (isVisible) {
-					popup.classList.remove('show');
-					overlay.style.display = 'none';
+					button.style.display = 'none';
 				} else {
-					popup.classList.add('show');
-					overlay.style.display = 'block';
+					button.style.display = 'block';
 				}
 			}
 
@@ -131,7 +130,7 @@
 				document.body.classList.remove('is-preload');
 				setTimeout(() => {
 					togglePopup(); // Show the popup with a delay
-				}, 1000); // Adjust delay as needed
+				}, 3000); // 1-second delay to match the loading timing
 			});
 		</script>
 	</body>

@@ -88,8 +88,8 @@
 							<li><a href="mailto:bellacaprino@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 						</ul>
 					</nav>
-					<!-- Button to open popup -->
-					<button onclick="togglePopup()">Check Out My New Single!</button>
+					<!-- Button to open popup (hidden after close) -->
+					<button id="open-popup-button" style="display: none;" onclick="togglePopup()">Check Out My New Single!</button>
 				</header>
 
 				<!-- Footer -->
@@ -111,12 +111,24 @@
 			function togglePopup() {
 				const popup = document.getElementById('popup');
 				const overlay = document.getElementById('overlay');
+				const button = document.getElementById('open-popup-button');
 				const isVisible = popup.style.display === 'block';
+
+				// Show/hide the popup and overlay
 				popup.style.display = isVisible ? 'none' : 'block';
 				overlay.style.display = isVisible ? 'none' : 'block';
+
+				// Hide the button once the popup is closed
+				if (isVisible) {
+					button.style.display = 'none';
+				}
 			}
 
-			window.onload = function() { document.body.classList.remove('is-preload'); }
+			// Automatically show the popup when the page loads
+			window.onload = function() {
+				document.body.classList.remove('is-preload');
+				togglePopup(); // Show the popup automatically
+			}
 		</script>
 	</body>
 </html>

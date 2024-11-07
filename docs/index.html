@@ -12,9 +12,18 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
-			/* Popup modal styling */
+			/* Popup modal styling with fade-in effect */
+			#popup, #overlay {
+				opacity: 0;
+				transition: opacity 0.5s ease; /* Transition for fade-in effect */
+			}
+
+			#popup.show, #overlay.show {
+				opacity: 1;
+			}
+
 			#popup {
-				display: none; /* Initially hidden */
+				display: block; /* Show the popup with JS control */
 				position: fixed;
 				top: 50%;
 				left: 50%;
@@ -43,7 +52,7 @@
 			}
 
 			#overlay {
-				display: none; /* Initially hidden */
+				display: block; /* Show the overlay with JS control */
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -62,11 +71,6 @@
 				top: 10px;
 				right: 15px;
 				text-decoration: none;
-			}
-
-			/* Hide button initially */
-			#open-popup-button {
-				display: none;
 			}
 		</style>
 	</head>
@@ -96,45 +100,4 @@
 
 				<!-- Footer -->
 				<footer id="footer">
-					<span class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>.</span>
-				</footer>
-
-			</div>
-
-			<!-- Popup Modal -->
-			<div id="popup">
-				<a id="close-popup" onclick="togglePopup()">&times;</a>
-				<h2>Check Out My New Single!</h2>
-				<iframe src="https://open.spotify.com/embed/track/4j72rOnRp7zNk42JWdzC5D?si=85bc42dbdb7c4b69" allow="encrypted-media"></iframe>
-			</div>
-		</div>
-		<script>
-			// Function to toggle popup visibility
-			function togglePopup() {
-				const popup = document.getElementById('popup');
-				const overlay = document.getElementById('overlay');
-				const button = document.getElementById('open-popup-button');
-				const isVisible = popup.style.display === 'block';
-
-				// Toggle the popup and overlay
-				popup.style.display = isVisible ? 'none' : 'block';
-				overlay.style.display = isVisible ? 'none' : 'block';
-
-				// Show the button only after closing the popup
-				if (isVisible) {
-					button.style.display = 'none';
-				} else {
-					button.style.display = 'block';
-				}
-			}
-
-			// Show the popup with a delay to match page load timing
-			document.addEventListener('DOMContentLoaded', () => {
-				document.body.classList.remove('is-preload');
-				setTimeout(() => {
-					togglePopup(); // Show the popup with a delay
-				}, 1000); // 1-second delay to match the loading timing
-			});
-		</script>
-	</body>
-</html>
+					<span class="copyright">&copy; Untitled. Design: <a href="http://html

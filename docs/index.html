@@ -13,20 +13,24 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
 			/* Popup modal styling */
-			#popup {
+			#popup, #overlay {
 				display: none; /* Hidden by default */
+			}
+
+			#popup {
 				position: fixed;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
 				background-color: #222;
 				padding: 20px;
-				width: 80%;
+				width: 90%;
 				max-width: 400px;
 				border-radius: 8px;
 				box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 				text-align: center;
 				z-index: 1001;
+				color: white;
 			}
 
 			#popup h2 {
@@ -41,9 +45,7 @@
 				border-radius: 4px;
 			}
 
-			/* Dark overlay */
 			#overlay {
-				display: none; /* Hidden by default */
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -101,4 +103,20 @@
 			<div id="popup">
 				<a id="close-popup" onclick="togglePopup()">&times;</a>
 				<h2>Check Out My New Single!</h2>
-				<iframe src="
+				<iframe src="https://open.spotify.com/embed/track/4j72rOnRp7zNk42JWdzC5D?si=85bc42dbdb7c4b69" allow="encrypted-media"></iframe>
+			</div>
+		</div>
+		<script>
+			// Function to toggle popup visibility
+			function togglePopup() {
+				const popup = document.getElementById('popup');
+				const overlay = document.getElementById('overlay');
+				const isVisible = popup.style.display === 'block';
+				popup.style.display = isVisible ? 'none' : 'block';
+				overlay.style.display = isVisible ? 'none' : 'block';
+			}
+
+			window.onload = function() { document.body.classList.remove('is-preload'); }
+		</script>
+	</body>
+</html>

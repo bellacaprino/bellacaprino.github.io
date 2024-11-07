@@ -14,19 +14,20 @@
 		<style>
 			/* Popup modal styling */
 			#popup {
-				display: none; /* Hidden by default */
+				display: block; /* Show popup immediately */
 				position: fixed;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
 				background-color: #222;
 				padding: 20px;
-				width: 80%;
+				width: 90%;
 				max-width: 400px;
 				border-radius: 8px;
 				box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 				text-align: center;
 				z-index: 1001;
+				color: white;
 			}
 
 			#popup h2 {
@@ -41,9 +42,8 @@
 				border-radius: 4px;
 			}
 
-			/* Dark overlay */
 			#overlay {
-				display: none; /* Hidden by default */
+				display: block; /* Show overlay immediately */
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -62,6 +62,11 @@
 				top: 10px;
 				right: 15px;
 				text-decoration: none;
+			}
+
+			/* Hide button initially */
+			#open-popup-button {
+				display: none;
 			}
 		</style>
 	</head>
@@ -86,8 +91,8 @@
 							<li><a href="mailto:bellacaprino@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 						</ul>
 					</nav>
-					<!-- Button to open popup -->
-					<button onclick="togglePopup()">Check Out My New Single!</button>
+					<!-- Button to open popup (hidden initially) -->
+					<button id="open-popup-button" onclick="togglePopup()">Check Out My New Single!</button>
 				</header>
 
 				<!-- Footer -->
@@ -109,14 +114,25 @@
 			function togglePopup() {
 				const popup = document.getElementById('popup');
 				const overlay = document.getElementById('overlay');
+				const button = document.getElementById('open-popup-button');
 				const isVisible = popup.style.display === 'block';
+
+				// Toggle the popup and overlay
 				popup.style.display = isVisible ? 'none' : 'block';
 				overlay.style.display = isVisible ? 'none' : 'block';
+
+				// Show the button only after closing the popup
+				if (isVisible) {
+					button.style.display = 'none';
+				} else {
+					button.style.display = 'block';
+				}
 			}
 
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
+			// Remove 'is-preload' class on page load
+			document.addEventListener('DOMContentLoaded', () => {
+				document.body.classList.remove('is-preload');
+			});
 		</script>
 	</body>
 </html>

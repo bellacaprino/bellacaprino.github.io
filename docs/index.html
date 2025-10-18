@@ -27,6 +27,17 @@
     .about-grid img {width: 100%;border-radius: 12px;object-fit: cover;filter: brightness(0.9) contrast(1.1);box-shadow: 0 4px 12px rgba(0,0,0,0.3);}
 
     .proj{display:flex;flex-direction:column; border:1.2px solid var(--leaf); border-radius:18px; overflow:hidden; background:rgba(25,25,20,.82); position:relative; isolation:isolate; filter:url(#paper-grain);}
+    .proj .copy{padding:16px}
+    .thumb{display:none}
+    /* Embeds sized to match across cards */
+    .embed-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0f0f0f;border-bottom:1px solid var(--border)}
+    .embed-frame iframe, .embed-frame img{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;object-fit:cover}
+    /* Album carousel */
+    .album .nav{position:absolute;inset:auto 0 8px 0;display:flex;justify-content:space-between;gap:8px;padding:0 8px;pointer-events:none}
+    .album button{pointer-events:auto;background:rgba(0,0,0,.45);color:var(--cream);border:1px solid var(--leaf);backdrop-filter:blur(2px);font-weight:700;border-radius:10px;padding:6px 10px;cursor:pointer}
+    .album button:hover{background:rgba(0,0,0,.6)}
+    .album .counter{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.45);color:var(--cream);border:1px solid var(--leaf);border-radius:10px;padding:4px 8px;font-size:.85rem}
+
     .thumb{aspect-ratio:16/9;background:#101010;border-bottom:1px solid var(--border);display:grid;place-items:center;color:var(--muted)}
     .proj .copy{padding:16px}
 
@@ -114,25 +125,41 @@
     <div class="container">
       <h2>Projects</h2>
       <div class="grid cols-3">
+        <!-- Botanode: YouTube embed -->
         <article class="proj">
-          <div class="thumb">Image / video</div>
+          <div class="embed-frame">
+            <iframe title="Botanode video" src="https://www.youtube.com/embed/xQ55Ug_NOFU" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
           <div class="copy">
             <h3>Botanode</h3>
             <p>Standalone, battery-powered instrument translating living plant signals into musical gestures—exploring intimacy between audience, artist, and environment.</p>
           </div>
         </article>
+
+        <!-- Photo Album: same footprint, arrow navigation -->
         <article class="proj">
-          <div class="thumb">Image / video</div>
+          <div class="embed-frame album" data-images="album1.jpg,album2.jpg,album3.jpg">
+            <img alt="Show photo" src="album1.jpg" />
+            <div class="counter">1 / 3</div>
+            <div class="nav">
+              <button type="button" class="prev" aria-label="Previous photo">‹</button>
+              <button type="button" class="next" aria-label="Next photo">›</button>
+            </div>
+          </div>
           <div class="copy">
-            <h3>Live Mix Reels</h3>
-            <p>Clips that capture the live emotional rush of a crowd connecting with sound.</p>
+            <h3>Photo Album</h3>
+            <p>Moments from FOH and stage—console focus, changeovers, and crowd energy. Click the arrows to browse.</p>
           </div>
         </article>
+
+        <!-- Personal Music: Spotify embed -->
         <article class="proj">
-          <div class="thumb">Image / video</div>
+          <div class="embed-frame">
+            <iframe title="Personal music on Spotify" src="https://open.spotify.com/embed/track/4j72rOnRp7zNk42JWdzC5D?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          </div>
           <div class="copy">
-            <h3>Playback</h3>
-            <p>Redundant playback rigs and show files tuned for quick changeovers.</p>
+            <h3>Personal Music</h3>
+            <p>Writing and production that inform my live mixing choices—tone, space, and dynamics.</p>
           </div>
         </article>
       </div>
@@ -157,5 +184,25 @@
       </div>
     </div>
   </section>
+<script>
+    // Simple album carousel logic
+    document.querySelectorAll('.album').forEach(function(album){
+      const imgs = (album.getAttribute('data-images')||'').split(',').map(s=>s.trim()).filter(Boolean);
+      if(!imgs.length) return;
+      let idx = 0;
+      const imgEl = album.querySelector('img');
+      const counter = album.querySelector('.counter');
+      const prevBtn = album.querySelector('.prev');
+      const nextBtn = album.querySelector('.next');
+
+      function render(){
+        imgEl.src = imgs[idx];
+        if(counter) counter.textContent = (idx+1) + ' / ' + imgs.length;
+      }
+      prevBtn && prevBtn.addEventListener('click', ()=>{ idx = (idx - 1 + imgs.length) % imgs.length; render(); });
+      nextBtn && nextBtn.addEventListener('click', ()=>{ idx = (idx + 1) % imgs.length; render(); });
+      render();
+    });
+  </script>
 </body>
 </html>

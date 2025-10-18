@@ -7,53 +7,139 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Zilla+Slab:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bark:#724817;--rust:#663B2A;--cream:#E2C7A1;--pine:#414033;--leaf:#6D6941;--vine-soft:#8EA680;--vine-bright:#A8BA92;--text:#F5EEE4;--muted:#CDBFAA;--border:rgba(226,199,161,.2);--bg:#0d100d;--radius:16px;--max:1100px;--header-h:70px;
+      --bark:#724817;--rust:#663B2A;--cream:#E2C7A1;--pine:#414033;
+      --leaf:#6D6941;--vine-soft:#8EA680;--vine-bright:#A8BA92;
+      --text:#F5EEE4;--muted:#CDBFAA;--border:rgba(226,199,161,.2);
+      --bg:#0d100d;--radius:16px;--max:1100px;--header-h:70px;
     }
-    body{margin:0;font-family:'Zilla Slab',serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;position:relative}
-    header{position:sticky;top:0;background:rgba(20,25,20,.7);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:10}
-    .nav{height:var(--header-h);display:flex;justify-content:space-between;align-items:center;max-width:var(--max);margin:0 auto;padding:0 20px}
-    .brand{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--cream)}
-    nav a{margin-left:24px;color:var(--muted);text-decoration:none;font-weight:600}
-    nav a:hover{color:var(--cream)}
-    .section{padding:100px 0;scroll-margin-top:calc(var(--header-h) + 16px)}
-    h1,h2,h3{font-family:'Fraunces',serif;margin:0 0 20px}
-    h2{position:relative;margin-bottom:50px}
-    h2::after{content:'';position:absolute;bottom:-20px;left:0;width:100px;height:4px;background:linear-gradient(90deg,var(--bark),var(--rust));border-radius:999px;opacity:.6}
-    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-    .card {background: rgba(25,25,20,.9);border: 1.2px solid var(--leaf);border-radius: 18px;padding: 28px;box-shadow: 0 6px 16px rgba(0,0,0,.32);position: relative;overflow: hidden;isolation:isolate;filter: url(#paper-grain);}
+    body {
+      margin:0; font-family:'Zilla Slab',serif;
+      background:var(--bg); color:var(--text);
+      overflow-x:hidden; line-height:1.7; position:relative;
+    }
 
-    .about-grid {display: grid;grid-template-columns: 2fr 1fr 1fr;gap: 20px;align-items: start;}
-    .about-grid img {width: 100%;border-radius: 12px;object-fit: cover;filter: brightness(0.9) contrast(1.1);box-shadow: 0 4px 12px rgba(0,0,0,0.3);}
+    header {
+      position:sticky; top:0;
+      background:rgba(20,25,20,.7);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--border);
+      z-index:10;
+    }
 
-    .proj{display:flex;flex-direction:column; border:1.2px solid var(--leaf); border-radius:18px; overflow:hidden; background:rgba(25,25,20,.82); position:relative; isolation:isolate; filter:url(#paper-grain);}
-    .proj .copy{padding:16px}
-    .thumb{display:none}
-    /* Embeds sized to match across cards */
-    .embed-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0f0f0f;border-bottom:1px solid var(--border)}
-    .embed-frame iframe, .embed-frame img{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;object-fit:cover}
-    /* Album carousel */
-    .album .nav{position:absolute;inset:auto 0 8px 0;display:flex;justify-content:space-between;gap:8px;padding:0 8px;pointer-events:none}
-    .album button{pointer-events:auto;background:rgba(0,0,0,.45);color:var(--cream);border:1px solid var(--leaf);backdrop-filter:blur(2px);font-weight:700;border-radius:10px;padding:6px 10px;cursor:pointer}
-    .album button:hover{background:rgba(0,0,0,.6)}
-    .album .counter{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.45);color:var(--cream);border:1px solid var(--leaf);border-radius:10px;padding:4px 8px;font-size:.85rem}
+    .nav {
+      height:var(--header-h);
+      display:flex; justify-content:space-between; align-items:center;
+      max-width:var(--max); margin:0 auto; padding:0 20px;
+    }
 
-    .thumb{aspect-ratio:16/9;background:#101010;border-bottom:1px solid var(--border);display:grid;place-items:center;color:var(--muted)}
-    .proj .copy{padding:16px}
+    .brand {
+      font-family:'Fraunces',serif;
+      font-size:1.5rem; font-weight:700; color:var(--cream);
+    }
 
-    label{font-weight:600}input,textarea{width:100%;padding:12px 14px;border-radius:14px;border:1.4px solid var(--leaf);background:#0e110e;color:var(--text);filter:url(#paper-grain)}textarea{min-height:140px;resize:vertical}
-    .btn{position:relative;display:inline-block;padding:12px 18px;border-radius:14px;border:1.4px solid var(--leaf);background:linear-gradient(90deg,var(--bark),var(--rust));color:#1a130d;font-weight:800;text-decoration:none}
+    nav a {
+      margin-left:24px; color:var(--muted);
+      text-decoration:none; font-weight:600;
+    }
+
+    nav a:hover { color:var(--cream); }
+
+    .section { padding:100px 0; scroll-margin-top:calc(var(--header-h) + 16px); }
+
+    h1,h2,h3 {
+      font-family:'Fraunces',serif;
+      margin:0 0 20px;
+    }
+
+    h2 {
+      position:relative; margin-bottom:56px;
+    }
+
+    h2::after {
+      content:''; position:absolute; left:0; bottom:-22px;
+      width:120px; height:8px;
+      background:linear-gradient(90deg,var(--bark),var(--rust));
+      border-radius:12px; opacity:.45;
+    }
+
+    .container { max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+    .card {
+      background:rgba(25,25,20,.9);
+      border:1.2px solid var(--leaf);
+      border-radius:18px; padding:28px;
+      box-shadow:0 6px 16px rgba(0,0,0,.32);
+      position:relative; overflow:hidden; isolation:isolate;
+    }
+
+    .about-grid {
+      display:grid; grid-template-columns:2fr 1fr 1fr;
+      gap:20px; align-items:start;
+    }
+
+    .about-grid img {
+      width:100%; border-radius:12px; object-fit:cover;
+      filter:brightness(0.9) contrast(1.1);
+      box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .grid { display:grid; gap:18px; }
+    .cols-2 { grid-template-columns:repeat(2,1fr); }
+    .cols-3 { grid-template-columns:repeat(3,1fr); }
+    @media(max-width:900px){ .cols-2,.cols-3 { grid-template-columns:1fr; } }
+
+    .proj {
+      display:flex; flex-direction:column;
+      border:1.2px solid var(--leaf);
+      border-radius:18px; overflow:hidden;
+      background:rgba(25,25,20,.82);
+      position:relative; isolation:isolate;
+    }
+
+    .thumb { aspect-ratio:16/9; background:#101010;
+      border-bottom:1px solid var(--border);
+      display:grid; place-items:center; color:var(--muted); }
+
+    .proj .copy { padding:16px; }
+
+    /* Embeds */
+    .embed-box { position:relative; border-bottom:1px solid var(--border); line-height:0; }
+    .embed-box iframe { display:block; width:100%; border:0; }
+    .embed-box.youtube { aspect-ratio:16/9; }
+    .embed-box.youtube iframe { height:100%; }
+    .embed-box.spotify { height:152px; }
+    .embed-box.spotify iframe { height:100%; }
+
+    /* Album */
+    .album { position:relative; aspect-ratio:16/9; background:#101010;
+      border-bottom:1px solid var(--border); overflow:hidden; }
+    .album img { position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; display:block; transition:opacity .3s ease; }
+    .album-btn { position:absolute; top:50%; transform:translateY(-50%);
+      width:40px; height:40px; border-radius:999px; border:1px solid var(--leaf);
+      background:rgba(20,20,18,.7); color:var(--cream); font-size:22px;
+      line-height:38px; text-align:center; cursor:pointer; user-select:none;
+      backdrop-filter:blur(4px); }
+    .album-btn:hover { background:rgba(20,20,18,.9); }
+    .album-btn.prev { left:10px; }
+    .album-btn.next { right:10px; }
+
+    .album-caption {
+      position:absolute; left:0; right:0; bottom:0;
+      display:flex; gap:10px; align-items:center;
+      padding:10px 14px;
+      background:linear-gradient(180deg, rgba(10,12,10,0) 0%, rgba(10,12,10,.7) 60%, rgba(10,12,10,.85) 100%);
+      color:var(--muted); font-size:0.95rem;
+    }
+    .album-count {
+      font-weight:700; color:var(--cream);
+      background:rgba(20,20,18,.6);
+      border:1px solid var(--border); border-radius:8px; padding:2px 8px;
+    }
+    .album-text { opacity:.95; }
   </style>
-  <svg width="0" height="0" style="position:absolute">
-    <defs>
-      <filter id="paper-grain">
-        <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
-        <feColorMatrix type="saturate" values="0"/>
-        <feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer>
-        <feBlend mode="multiply" in2="SourceGraphic"/>
-      </filter>
-    </defs>
-  </svg>
+
 </head>
 <body>
   <header>
@@ -76,8 +162,8 @@
         <div>
           <p>I’m Belle Cirino, a FOH/monitors engineer based in Boston. I build trust with artists, keep comms calm, and shape dynamics so energy translates—from quiet to roar—without losing musicality.</p>
         </div>
-        <img src="image1.jpg" alt="Belle at mixing console">
-        <img src="image2.jpg" alt="Belle live sound setup">
+        <img src="images/image1.jpg" alt="Belle working live">
+        <img src="images/image2.jpg" alt="Belle at console">
       </div>
     </div>
   </section>
@@ -125,43 +211,59 @@
     <div class="container">
       <h2>Projects</h2>
       <div class="grid cols-3">
-        <!-- Botanode: YouTube embed -->
+
+        <!-- Botanode video -->
         <article class="proj">
-          <div class="embed-frame">
-            <iframe title="Botanode video" src="https://www.youtube.com/embed/xQ55Ug_NOFU" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <div class="embed-box youtube">
+            <iframe src="https://www.youtube.com/embed/xQ55Ug_NOFU" title="Botanode"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy"></iframe>
           </div>
           <div class="copy">
             <h3>Botanode</h3>
-            <p>Standalone, battery-powered instrument translating living plant signals into musical gestures—exploring intimacy between audience, artist, and environment.</p>
+            <p>Standalone, battery-powered instrument translating living plant signals into musical gestures.</p>
           </div>
         </article>
 
-        <!-- Photo Album: same footprint, arrow navigation -->
+        <!-- Photo album -->
         <article class="proj">
-          <div class="embed-frame album" data-images="album1.jpg,album2.jpg,album3.jpg">
-            <img alt="Show photo" src="album1.jpg" />
-            <div class="counter">1 / 3</div>
-            <div class="nav">
-              <button type="button" class="prev" aria-label="Previous photo">‹</button>
-              <button type="button" class="next" aria-label="Next photo">›</button>
+          <div class="album" id="album1"
+               data-images='[
+                 "images/fenwayconcert.jpg|Working as an Audio Utility for the Fenway Summer Concert Series",
+                 "images/redrocksfar.jpg|Shadowing Sturgill Simpson at Red Rocks Amphitheatre in Colorado",
+                 "images/lbpshadow.jpg|Shadowing Rob Thomas at Leader Bank Pavilion in Boston, MA",
+                 "images/fhall.jpg|Summer in the City series with Berklee and the City of Boston",
+                 "images/redrocksshadow.jpg|Red Rocks Amphitheatre",
+                 "images/gbn.jpg|AV Technician at Grace By Nia in Boston, MA",
+                 "images/fenwaycamera.jpg|Operating a camera at Fenway Park"
+               ]'>
+            <img alt="Tour photo" loading="lazy">
+            <button class="album-btn prev">‹</button>
+            <button class="album-btn next">›</button>
+            <div class="album-caption">
+              <span class="album-count">1/7</span>
+              <span class="album-text">Caption</span>
             </div>
           </div>
           <div class="copy">
             <h3>Photo Album</h3>
-            <p>Moments from FOH and stage—console focus, changeovers, and crowd energy. Click the arrows to browse.</p>
+            <p>Working moments: FOH, monitors, patching, and pre-show prep.</p>
           </div>
         </article>
 
-        <!-- Personal Music: Spotify embed -->
+        <!-- Spotify track -->
         <article class="proj">
-          <div class="embed-frame">
-            <iframe title="Personal music on Spotify" src="https://open.spotify.com/embed/track/4j72rOnRp7zNk42JWdzC5D?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <div class="embed-box spotify">
+            <iframe src="https://open.spotify.com/embed/track/4j72rOnRp7zNk42JWdzC5D?utm_source=generator"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"></iframe>
           </div>
           <div class="copy">
             <h3>Personal Music</h3>
-            <p>Writing and production that inform my live mixing choices—tone, space, and dynamics.</p>
+            <p>A track that captures my taste and ear for tone.</p>
           </div>
         </article>
+
       </div>
     </div>
   </section>
@@ -173,36 +275,50 @@
         <p>Tell me about your show and the feeling you want in the room—let’s build it together.</p>
         <form onsubmit="alert('Replace with your form handler'); return false;">
           <label for="name">Name</label>
-          <input id="name" name="name" required />
+          <input id="name" name="name" required>
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" required />
+          <input id="email" name="email" type="email" required>
           <label for="msg">Message</label>
           <textarea id="msg" name="message" required></textarea>
           <button class="btn" type="submit">Send</button>
         </form>
-        <p style="margin-top:12px;color:var(--muted)">Or email <a href="mailto:bellecirinoaudio@gmail.com" style="color:var(--cream)">bellecirinoaudio@gmail.com</a> • Boston, MA</p>
+        <p style="margin-top:12px;color:var(--muted)">
+          Or email <a href="mailto:bellecirinoaudio@gmail.com" style="color:var(--cream)">bellecirinoaudio@gmail.com</a> • Boston, MA
+        </p>
       </div>
     </div>
   </section>
-<script>
-    // Simple album carousel logic
-    document.querySelectorAll('.album').forEach(function(album){
-      const imgs = (album.getAttribute('data-images')||'').split(',').map(s=>s.trim()).filter(Boolean);
-      if(!imgs.length) return;
-      let idx = 0;
-      const imgEl = album.querySelector('img');
-      const counter = album.querySelector('.counter');
-      const prevBtn = album.querySelector('.prev');
-      const nextBtn = album.querySelector('.next');
 
-      function render(){
-        imgEl.src = imgs[idx];
-        if(counter) counter.textContent = (idx+1) + ' / ' + imgs.length;
+  <script>
+  (function () {
+    function initAlbum(el) {
+      const raw = el.getAttribute('data-images') || '[]';
+      let pairs;
+      try { pairs = JSON.parse(raw); } catch { pairs = []; }
+      const items = pairs.map(s => {
+        const sep = s.indexOf('|');
+        return sep > -1 ? { src: s.slice(0, sep).trim(), cap: s.slice(sep + 1).trim() } : { src: s.trim(), cap: '' };
+      });
+      if (!items.length) return;
+
+      let i = 0;
+      const img = el.querySelector('img');
+      const count = el.querySelector('.album-count');
+      const text = el.querySelector('.album-text');
+
+      function render() {
+        img.src = items[i].src;
+        img.alt = items[i].cap || 'Album photo';
+        count.textContent = (i + 1) + '/' + items.length;
+        text.textContent = items[i].cap || '';
       }
-      prevBtn && prevBtn.addEventListener('click', ()=>{ idx = (idx - 1 + imgs.length) % imgs.length; render(); });
-      nextBtn && nextBtn.addEventListener('click', ()=>{ idx = (idx + 1) % imgs.length; render(); });
       render();
-    });
+
+      el.querySelector('.prev').addEventListener('click', () => { i = (i - 1 + items.length) % items.length; render(); });
+      el.querySelector('.next').addEventListener('click', () => { i = (i + 1) % items.length; render(); });
+    }
+    document.querySelectorAll('.album').forEach(initAlbum);
+  })();
   </script>
 </body>
 </html>

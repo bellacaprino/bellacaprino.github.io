@@ -51,7 +51,7 @@
       color:#1a130d; font-weight:800; text-decoration:none;
     }
 
-    .section { padding:50px 0; scroll-margin-top:calc(var(--header-h) + 16px); }
+    .section { padding:20px 0; scroll-margin-top:calc(var(--header-h) + 16px); }
 
     h1,h2,h3 { font-family:'Fraunces',serif; margin:0 0 20px; }
 
@@ -156,6 +156,22 @@
       background:linear-gradient(90deg,var(--bark),var(--rust));
       color:#1a130d; font-weight:800; text-decoration:none;
     }
+
+    /* Social icons */
+    .socials {
+      margin-top:14px;
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+    }
+    .socials a {
+      display:inline-flex; align-items:center; justify-content:center;
+      width:36px; height:36px; border-radius:999px;
+      border:1px solid var(--leaf);
+      color:var(--muted);
+      background:rgba(20,20,18,.6);
+      text-decoration:none;
+    }
+    .socials a:hover { color:var(--cream); background:rgba(20,20,18,.9); }
+    .socials svg { width:20px; height:20px; fill:currentColor; }
   </style>
 </head>
 <body>
@@ -170,7 +186,6 @@
         <a href="#contact">contact</a>
         <!-- Résumé download in nav -->
         <a class="btn-link" href="Belle_Cirino_Resume_2025.pdf" target="_blank" rel="noopener">résumé</a>
-
       </nav>
     </div>
   </header>
@@ -189,7 +204,7 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE (rewritten to match your resume) -->
+  <!-- EXPERIENCE -->
   <section id="experience" class="section">
     <div class="container">
       <h2>experience</h2>
@@ -202,25 +217,21 @@
           <h4 style="margin:.5rem 0 0">audio utility — fenway park, boston, MA</h4>
           <p style="margin:.25rem 0 1rem; color:var(--muted)">jan 2025 – present</p>
 
-
           <h4 style="margin:1.25rem 0 0">live audio engineer — berklee / boston conservatory</h4>
           <p style="margin:.25rem 0 1rem; color:var(--muted)">aug 2024 – present</p>
-
 
           <h4 style="margin:1.25rem 0 0">AV technician / stagehand — big night live & grace by nia</h4>
           <p style="margin:.25rem 0 1rem; color:var(--muted)">may 2025 – present</p>
 
-
           <h4 style="margin:1.25rem 0 0">studio intern — blackbird studio, nashville, TN</h4>
           <p style="margin:.25rem 0 1rem; color:var(--muted)">may 2024 – sept 2024</p>
-
         </div>
 
         <!-- Highlights / Skills -->
         <div class="card">
           <h3>highlights</h3>
           <ul>
-            <li>shadowed high-profile tours at <em>red rocks</em>, <em>leader bank pavilion</em>, <em>fenway ark</em>, and <em>paradise rock club</em>.</li>
+            <li>shadowed high-profile tours at <em>red rocks</em>, <em>leader bank pavilion</em>, <em>fenway park</em>, and <em>paradise rock club</em>.</li>
             <li>engineered grammy winners including <em>antonio sánchez</em> and <em>teddy riley</em>.</li>
             <li>recipient of the <em>imogen heap scholarship</em> (berklee).</li>
           </ul>
@@ -257,9 +268,7 @@
       <h2>projects</h2>
       <div class="grid cols-3">
 
-
-
-        <!-- Photo album (uses your current filenames/casing) -->
+        <!-- Photo album -->
         <article class="proj">
           <div class="album" id="album1"
                data-images='[
@@ -330,14 +339,36 @@
           <textarea id="msg" name="message" required></textarea>
           <button class="btn" type="submit">send</button>
         </form>
-        <p style="margin-top:12px;color:var(--muted)">
-          or email <a href="mailto:bellecirinoaudio@gmail.com" style="color:var(--cream)">bellecirinoaudio@gmail.com</a>
-        </p>
-        <!-- Résumé download inside the card -->
-        <p style="margin-top:12px">
-      <a class="btn-link" href="Belle_Cirino_Resume_2025.pdf" target="_blank" rel="noopener">résumé</a>
 
-</p>
+        <div style="margin-top:12px;color:var(--muted)">
+          or email <a href="mailto:bellecirinoaudio@gmail.com" style="color:var(--cream)">bellecirinoaudio@gmail.com</a>
+        </div>
+
+        <!-- Social icons -->
+        <div class="socials" aria-label="social links">
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/belle.wav/" target="_blank" rel="noopener" aria-label="instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5c2.7 0 3.1 0 4.2.1 1 .1 1.6.2 2.2.5.6.3 1.1.6 1.6 1.1.5.5.8 1 1.1 1.6.3.6.4 1.2.5 2.2.1 1.1.1 1.5.1 4.2s0 3.1-.1 4.2c-.1 1-.2 1.6-.5 2.2a4.2 4.2 0 0 1-1.1 1.6 4.2 4.2 0 0 1-1.6 1.1c-.6.3-1.2.4-2.2.5-1.1.1-1.5.1-4.2.1s-3.1 0-4.2-.1c-1-.1-1.6-.2-2.2-.5a4.2 4.2 0 0 1-1.6-1.1 4.2 4.2 0 0 1-1.1-1.6c-.3-.6-.4-1.2-.5-2.2C2 15.1 2 14.7 2 12s0-3.1.1-4.2c.1-1 .2-1.6.5-2.2.3-.6.6-1.1 1.1-1.6.5-.5 1-.8 1.6-1.1.6-.3 1.2-.4 2.2-.5C8.9 2 9.3 2 12 2zm0 2c-2.6 0-3 0-4 .1-.9.1-1.4.2-1.7.4-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.2.3-.3.8-.4 1.7C4 10 4 10.4 4 12s0 2 .1 2.9c.1.9.2 1.4.4 1.7.2.4.4.7.7 1 .3.3.6.5 1 .7.3.2.8.3 1.7.4.9.1 1.3.1 4 .1s3.1 0 4-.1c.9-.1 1.4-.2 1.7-.4.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .2-.3.3-.8.4-1.7.1-.9.1-1.3.1-4s0-3.1-.1-4c-.1-.9-.2-1.4-.4-1.7-.2-.4-.4-.7-.7-1a2.7 2.7 0 0 0-1-.7c-.3-.2-.8-.3-1.7-.4-.9-.1-1.3-.1-4-.1z"/><circle cx="18" cy="6" r="1.3"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/bellacaprino/" target="_blank" rel="noopener" aria-label="linkedin">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zM8.5 8h3.8v2.2h.1c.5-.9 1.7-2.2 3.9-2.2 4.2 0 5 2.8 5 6.5V24h-4v-7.3c0-1.7 0-3.8-2.3-3.8-2.3 0-2.6 1.8-2.6 3.7V24h-4V8z"/></svg>
+          </a>
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/@bellecapo" target="_blank" rel="noopener" aria-label="youtube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
+          </a>
+          <!-- Spotify -->
+          <a href="https://open.spotify.com/artist/3rezNIL8CeoWtdcryiFYGu?si=_EtldDhITvyr0OH3wfB3AA" target="_blank" rel="noopener" aria-label="spotify">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0a12 12 0 1 0 .001 24.001A12 12 0 0 0 12 0zm5.1 17.3c-.2.3-.6.4-.9.2-2.5-1.5-5.6-1.9-9.3-1-.3.1-.7-.1-.8-.4-.1-.3.1-.7.4-.8 4-.9 7.5-.5 10.3 1.1.3.2.4.6.3.9zm1.3-3.1c-.2.3-.6.5-.9.3-2.9-1.7-7.2-2.2-10.6-1.2-.3.1-.7-.1-.8-.4-.1-.3.1-.7.4-.8 3.9-1.1 8.7-.6 12 1.4.3.2.4.6.2.9zM18.7 8c-.2.3-.5.4-.9.2-3.3-2-10.4-2.2-14.1-1.2-.3.1-.7-.1-.8-.5-.1-.3.1-.7.5-.8 4.2-1.2 11.8-1 15.5 1.3.3.2.4.6.3 1z"/></svg>
+          </a>
+        </div>
+
+        <!-- Résumé link -->
+        <a class="btn-link" href="Belle_Cirino_Resume_2025.pdf" target="_blank" rel="noopener"
+           style="display:inline-block; margin-top:12px; text-decoration:none; font-weight:600; color:var(--cream);">
+          résumé
+        </a>
       </div>
     </div>
   </section>

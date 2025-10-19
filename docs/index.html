@@ -360,7 +360,7 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
     });
     if (res.ok) {
       form.reset();
-      status.textContent = 'Thanks! I’ll get back to you soon.';
+      status.textContent = 'sent!';
     } else {
       status.textContent = 'Hmm, something went wrong. Try email instead?';
     }
